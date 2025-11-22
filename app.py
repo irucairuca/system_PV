@@ -210,14 +210,14 @@ if st.button("シミュレーション実行"):
     ax1.grid(True)
     st.pyplot(fig1)
 
-    # 回転子角
-    fig2, ax2 = plt.subplots()
-    ax2.plot(t, delta_deg)
-    ax2.set_xlabel("t [s]")
-    ax2.set_ylabel("δ [deg]")
-    ax2.set_title("回転子位相角 δ の応答")
-    ax2.grid(True)
-    st.pyplot(fig2)
+    # # 回転子角
+    # fig2, ax2 = plt.subplots()
+    # ax2.plot(t, delta_deg)
+    # ax2.set_xlabel("t [s]")
+    # ax2.set_ylabel("δ [deg]")
+    # ax2.set_title("回転子位相角 δ の応答")
+    # ax2.grid(True)
+    # st.pyplot(fig2)
 
     # 需要家電圧の大きさ
     fig3, ax3 = plt.subplots()
