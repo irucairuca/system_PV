@@ -114,7 +114,7 @@ def simulate_system(
 
         ts.append(t)
         fHz.append(f_now)
-        del_deg.append(delta * 180.0 / math.pi)
+        del_deg.append((delta * 180.0 / math.pi)-omega_b*t*180.0/math.pi)  # 同期回転子角度に変換
         Vmag.append(abs(V_load))
         Vang_deg.append(cmath.phase(V_load) * 180.0 / math.pi)
         Pe_log.append(P_e)
