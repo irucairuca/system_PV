@@ -60,7 +60,8 @@ def electrical_power(delta: float, dw: float,
 def rhs(state, t, P_m,
         H, D,
         E_mag, R1, X1_base, R2, X2_base):
-    delta, dw = state
+    theta, dw = state
+    delta = theta - omega_b * t  # 同期座標系での相対角度
     P_e = electrical_power(delta, dw, E_mag, R1, X1_base, R2, X2_base)
     ddelta_dt = omega_b * dw
     ddw_dt    = (P_m - P_e - D * dw) / (2.0 * H)
