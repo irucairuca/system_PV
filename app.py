@@ -106,12 +106,12 @@ def simulate_system(
     n_steps = int(t_end / dt)
 
     for _ in range(n_steps + 1):
-        delta, dw = state
-
+        theta , dw = state
+        f_now = f0 * (1.0 + dw)  # [Hz]
+        delta = theta - 2*math.pi*f_now *t   # 同期座標系での相対角度
         # 現在の電気量
         E, I, V_load = currents_and_voltages(delta, dw, E_mag, R1, X1_base, R2, X2_base)
         P_e = electrical_power(delta, dw, E_mag, R1, X1_base, R2, X2_base)
-        f_now = f0 * (1.0 + dw)  # [Hz]
 
         ts.append(t)
         fHz.append(f_now)
@@ -211,13 +211,13 @@ if st.button("シミュレーション実行"):
     st.pyplot(fig1)
 
     # # 回転子角
-    # fig2, ax2 = plt.subplots()
-    # ax2.plot(t, delta_deg)
-    # ax2.set_xlabel("t [s]")
-    # ax2.set_ylabel("δ [deg]")
-    # ax2.set_title("回転子位相角 δ の応答")
-    # ax2.grid(True)
-    # st.pyplot(fig2)
+    fig2, ax2 = plt.subplots()
+    ax2.plot(t, delta_deg)
+    ax2.set_xlabel("t [s]")
+    ax2.set_ylabel("δ [deg]")
+    ax2.set_title("回転子位相角 δ の応答")
+    ax2.grid(True)
+    st.pyplot(fig2)
 
     # 需要家電圧の大きさ
     fig3, ax3 = plt.subplots()
